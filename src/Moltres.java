@@ -16,7 +16,7 @@ public class Moltres extends FirePokemon {
     }
 
     // receive enemy pokemon
-    private void scratch ( Pokemon pokemon ){
+    private void assistingHeater ( Pokemon pokemon ){
 
         Random random = new Random();
         int damage = random.nextInt(MIN_DAMAGE , MAX_DAMAGE)  ;

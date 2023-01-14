@@ -17,7 +17,7 @@ public class Salazzle extends Salandit {
     }
 
     // receive enemy pokemon
-    private void scratch ( Pokemon pokemon ){
+    private void fireClaws ( Pokemon pokemon ){
 
         Random random = new Random();
         int damage = random.nextInt(MIN_DAMAGE , MAX_DAMAGE)  ;

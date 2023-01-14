@@ -14,7 +14,7 @@ public class Charizard extends Charmeleon {
         super( HEALTH , ATTACK_POINTS  ,NAME, LEVEL );
     }
 
-    public void flameTale ( Pokemon pokemon ){
+    public void fieryBlast ( Pokemon pokemon ){
 
         Random random = new Random();
         int damage = random.nextInt(MIN_DAMAGE , MAX_DAMAGE)  ;

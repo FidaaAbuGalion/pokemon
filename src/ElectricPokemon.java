@@ -1,4 +1,4 @@
-public class ElectricPokemon extends Pokemon{
+public  class ElectricPokemon extends Pokemon{
 
 
     public ElectricPokemon ( int health , int attackPoints , String name , int level ){
@@ -10,4 +10,8 @@ public class ElectricPokemon extends Pokemon{
     public String toString() {
         return  " This is an electric pokemon " + "\n" + super.toString();
     }
+
+
+
 }
+

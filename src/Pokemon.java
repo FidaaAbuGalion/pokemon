@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public abstract class Pokemon  {
+public class Pokemon  {
 
     private String name ;
     private int level ;
@@ -14,6 +14,7 @@ public abstract class Pokemon  {
        this.level = level ;
 
    }
+   public Pokemon (){};
     public int getHealth(){
        return this.health;
     }
@@ -66,6 +67,7 @@ public abstract class Pokemon  {
            pokemon.setHealth(pokemon.getHealth() - damage);
 
    }
+ //  public abstract void printTypeOfAttack();
 
 }
 

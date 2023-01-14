@@ -19,7 +19,7 @@ public class Salandit extends FirePokemon {
         super(health , attackPoints , name ,level);
     }
 
-    private void scratch ( Pokemon pokemon ){
+    private void liveCoal ( Pokemon pokemon ){
 
         Random random = new Random();
         int damage = random.nextInt(MIN_DAMAGE , MAX_DAMAGE)  ;
