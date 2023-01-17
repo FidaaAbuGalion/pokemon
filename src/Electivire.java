@@ -1,29 +1,41 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Electivire extends Electabuzz {
 
-    private static final int ATTACK_POINTS = 120 ;
-    private static final int HEALTH = 35 ;
-    private static final String NAME = " Electivire ";
-    private static final int LEVEL = 2 ;
-    private static final int THUNDER_PUNCH = 80 ;
-    private static final int MAX_DAMAGE = 50 ;
-    private static final int MIN_DAMAGE =  120 ;
-
-
-
-    public Electivire () {
-        super( HEALTH , ATTACK_POINTS  ,NAME, LEVEL );
+    public Electivire ( int health , int attackPoints ) {
+        super( health , attackPoints,Definition.ELECTIVIRE_NAME, Definition.ELECTIVIRE_LEVEL );
     }
 
 
     public void thunderPunch ( Pokemon pokemon ){
 
         Random random = new Random();
-        int damage = random.nextInt(MIN_DAMAGE , MAX_DAMAGE)  ;
+        int damage = random.nextInt(Definition.ELECTIVIRE_MIN_DAMAGE , Definition.ELECTIVIRE_MAX_DAMAGE)  ;
 
-        this.setAttackPoints(this.getAttackPoints() - THUNDER_PUNCH );
+        this.setAttackPoints(this.getAttackPoints() - Definition.ELECTIVIRE_THUNDER_PUNCH );
         pokemon.setHealth(pokemon.getHealth() - damage);
+
+    }
+
+
+    public void printAttackMenu (){
+        super.printAttackMenu();
+        System.out.println(" 3 - Thunder punch attack damage between 50-120 \n cost - 80 points ");
+
+    }
+    public void attacks ( Pokemon enemy ){
+        printAttackMenu();
+        int userChoice ;
+        do {
+            Scanner scanner = new Scanner(System.in);
+            userChoice = scanner.nextByte();
+            if (userChoice ==1 || userChoice ==2){
+                super.attacks(enemy);
+            }else {
+                thunderPunch(enemy);
+            }
+        }while (userChoice < 1 || userChoice > 3);
 
     }
 

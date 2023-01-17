@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Pokemon  {
+public abstract class Pokemon  {
 
     private String name ;
     private int level ;
@@ -67,7 +67,43 @@ public class Pokemon  {
            pokemon.setHealth(pokemon.getHealth() - damage);
 
    }
- //  public abstract void printTypeOfAttack();
+   public void attacks ( Pokemon enemy ){
+    kick(enemy);
+   }
+
+    public void printAttackMenu (){
+        System.out.println(" 1 - regular kick # Damage 2 points ");
+
+    }
+
+    public void bonusOfWaiting (){
+
+     int healthBonus ;
+     int attackPointsBonus ;
+
+     Random random = new Random();
+     healthBonus = random.nextInt(5,31);
+     attackPointsBonus = random.nextInt(0,41);
+
+     setHealth(getHealth()+healthBonus);
+     setAttackPoints(getAttackPoints()+attackPointsBonus);
+        System.out.println(" health bonus -> " + healthBonus);
+        System.out.println(" attack points bonus -> " + attackPointsBonus + "\n");
+
+    }
+    public Pokemon upgrade(){
+
+        Charmander c1 = new Charmander();
+        Pichu p1 = new Pichu();
+        Salandit s1 = new Salandit();
+        Blitzle b1 = new Blitzle();
+        Electabuzz e1 = new Electabuzz();
+
+
+       return new Pokemon() {};
+
+
+    }
 
 }
 

@@ -12,6 +12,13 @@ public  class ElectricPokemon extends Pokemon{
     }
 
 
+    public void printAttackMenu (){
+        super.printAttackMenu();
+
+    }
+    public void attacks ( Pokemon enemy ){
+        super.attacks(enemy);
+    }
 
 }
 

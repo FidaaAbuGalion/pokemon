@@ -1,19 +1,11 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Pichu extends ElectricPokemon {
 
 
-    private static final int ATTACK_POINTS = 30 ;
-    private static final int HEALTH = 40 ;
-    private static final String NAME = " Pichu ";
-    private static final int LEVEL = 1 ;
-    private static final int QUICK_ATTACK_COST = 5 ;
-    private static final int MAX_DAMAGE = 11 ;
-    private static final int MIN_DAMAGE = 10 ;
-
-
     public Pichu () {
-        super( HEALTH , ATTACK_POINTS  ,NAME, LEVEL);
+        super( Definition.PICHU_HEALTH , (int) (Definition.PICHU_ATTACK_POINTS * Definition.SEVENTY_FIVE_PERCENT),Definition.PICHU_NAME, Definition.PICHU_LEVEL);
     }
 
     public Pichu ( int health , int attackPoints , String name , int level ) {
@@ -23,11 +15,29 @@ public class Pichu extends ElectricPokemon {
     private void quickAttack( Pokemon pokemon ){
 
         Random random = new Random();
-        int damage = random.nextInt(MIN_DAMAGE , MAX_DAMAGE)  ;
+        int damage = random.nextInt(Definition.PICHU_MIN_DAMAGE , Definition.PICHU__MAX_DAMAGE )  ;
 
-        this.setAttackPoints(this.getAttackPoints() - QUICK_ATTACK_COST );
+        this.setAttackPoints(this.getAttackPoints() - Definition.PICHU_QUICK_ATTACK_COST );
         pokemon.setHealth(pokemon.getHealth() - damage);
 
+    }
+    public void printAttackMenu (){
+        super.printAttackMenu();
+        System.out.println(" 2 - quick attack damage between 10 points \n cost - 5 points ");
+
+    }
+    public void attacks ( Pokemon enemy ){
+        printAttackMenu();
+        int userChoice;
+        do {
+            Scanner scanner = new Scanner(System.in);
+            userChoice = scanner.nextInt();
+            if (userChoice == 1) {
+                super.attacks(enemy);
+            } else if (userChoice == 2){
+                quickAttack(enemy);
+            }
+        }while (userChoice < 1 || userChoice > 2);
     }
 
 
@@ -36,5 +46,12 @@ public class Pichu extends ElectricPokemon {
         return super.toString();
     }
 
+    public Pichu upgrade(){
+
+        setHealth(this.getHealth() - Definition.UPGRADE_ONE_COST_HEALTH_POINTS);
+        setAttackPoints(this.getAttackPoints() - Definition.CHARMELEON_ATTACK_POINTS);
+
+        return new Pikachu( this.getHealth() , this.getAttackPoints() );
+    }
 
 }

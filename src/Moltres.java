@@ -1,27 +1,20 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Moltres extends FirePokemon {
 
-    private static final int ATTACK_POINTS = 60 ;
-    private static final int HEALTH = 120 ;
-    private static final String NAME = " Moltres ";
-    private static final int LEVEL = 1 ;
-    private static final int ASSISTING_HEATER_COST = 30 ;
-    private static final int MAX_DAMAGE = 60 ;
-    private static final int MIN_DAMAGE = 10 ;
-
 
     public Moltres () {
-        super( HEALTH , ATTACK_POINTS  ,NAME, LEVEL);
+        super( Definition.MOLTRES_HEALTH , (int) (Definition.MOLTRES_ATTACK_POINTS*Definition.SEVENTY_FIVE_PERCENT), Definition.MOLTRES_NAME, Definition.MOLTRES_LEVEL);
     }
 
     // receive enemy pokemon
     private void assistingHeater ( Pokemon pokemon ){
 
         Random random = new Random();
-        int damage = random.nextInt(MIN_DAMAGE , MAX_DAMAGE)  ;
+        int damage = random.nextInt( Definition.MOLTRES_MIN_DAMAGE , Definition.MOLTRES_MAX_DAMAGE)  ;
 
-        this.setAttackPoints(this.getAttackPoints() - ASSISTING_HEATER_COST );
+        this.setAttackPoints(this.getAttackPoints() - Definition.MOLTRES_ASSISTING_HEATER_COST );
         pokemon.setHealth(pokemon.getHealth() - damage);
 
     }
@@ -29,4 +22,30 @@ public class Moltres extends FirePokemon {
     public String toString() {
         return  "there is just one level in  this pokemon " + "\n" + super.toString();
     }
+
+    public void printAttackMenu (){
+        super.printAttackMenu();
+        System.out.println(" 2 - Assisting Heater attack \n damage between 10-60 \n cost - 30 points ");
+
+    }
+
+
+    public void attacks ( Pokemon enemy ){
+        printAttackMenu();
+        int userChoice;
+        do {
+            Scanner scanner = new Scanner(System.in);
+            userChoice = scanner.nextInt();
+            if (userChoice == 1) {
+                super.attacks(enemy);
+            } else {
+                assistingHeater(enemy);
+            }
+        }while (userChoice < 1 || userChoice > 2);
+    }
+
+
+
 }
+
+
